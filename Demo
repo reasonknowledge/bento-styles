@@ -1,0 +1,215 @@
+export default function Demo() {
+  const palettes = [
+    {
+      name: "Violet + Cyan",
+      fond: "#0a0a0f",
+      fondCard: "#0d0d14",
+      a1: { label: "violet-400", hex: "#a78bfa", tw: "bg-violet-400" },
+      a2: { label: "violet-600", hex: "#7c3aed", tw: "bg-violet-600" },
+      a3: { label: "sky-400",    hex: "#38bdf8", tw: "bg-sky-400" },
+      blobA: "#a78bfa", blobB: "#38bdf8",
+      borderCard: "rgba(167,139,250,0.2)",
+      glowFrom: "rgba(167,139,250,0.15)",
+      textAccent: "#a78bfa",
+      btnBg: "#7c3aed", btnHex: "violet-600",
+      labelColor: "rgba(167,139,250,0.7)",
+    },
+    {
+      name: "Golden",
+      fond: "#0c0900",
+      fondCard: "#100e00",
+      a1: { label: "yellow-400", hex: "#fbbf24", tw: "bg-yellow-400" },
+      a2: { label: "amber-500",  hex: "#f59e0b", tw: "bg-amber-500" },
+      a3: { label: "orange-400", hex: "#fb923c", tw: "bg-orange-400" },
+      blobA: "#fbbf24", blobB: "#fb923c",
+      borderCard: "rgba(251,191,36,0.2)",
+      glowFrom: "rgba(251,191,36,0.12)",
+      textAccent: "#fbbf24",
+      btnBg: "#f59e0b", btnHex: "amber-500",
+      labelColor: "rgba(251,191,36,0.6)",
+    },
+    {
+      name: "Sunset",
+      fond: "#0f0a0a",
+      fondCard: "#140d0d",
+      a1: { label: "pink-400",   hex: "#f472b6", tw: "bg-pink-400" },
+      a2: { label: "orange-500", hex: "#f97316", tw: "bg-orange-500" },
+      a3: { label: "yellow-400", hex: "#fbbf24", tw: "bg-yellow-400" },
+      blobA: "#f472b6", blobB: "#f97316",
+      borderCard: "rgba(244,114,182,0.2)",
+      glowFrom: "rgba(244,114,182,0.12)",
+      textAccent: "#f472b6",
+      btnBg: "#f97316", btnHex: "orange-500",
+      labelColor: "rgba(244,114,182,0.7)",
+    },
+    {
+      name: "Emerald",
+      fond: "#080f0c",
+      fondCard: "#0a1410",
+      a1: { label: "emerald-400", hex: "#34d399", tw: "bg-emerald-400" },
+      a2: { label: "teal-500",    hex: "#14b8a6", tw: "bg-teal-500" },
+      a3: { label: "cyan-400",    hex: "#22d3ee", tw: "bg-cyan-400" },
+      blobA: "#34d399", blobB: "#22d3ee",
+      borderCard: "rgba(52,211,153,0.2)",
+      glowFrom: "rgba(52,211,153,0.12)",
+      textAccent: "#34d399",
+      btnBg: "#14b8a6", btnHex: "teal-500",
+      labelColor: "rgba(52,211,153,0.6)",
+    },
+    {
+      name: "Mono Violet",
+      fond: "#0d0b14",
+      fondCard: "#110e1a",
+      a1: { label: "violet-400",  hex: "#a78bfa", tw: "bg-violet-400" },
+      a2: { label: "purple-500",  hex: "#a855f7", tw: "bg-purple-500" },
+      a3: { label: "fuchsia-500", hex: "#d946ef", tw: "bg-fuchsia-500" },
+      blobA: "#a855f7", blobB: "#d946ef",
+      borderCard: "rgba(168,85,247,0.2)",
+      glowFrom: "rgba(168,85,247,0.15)",
+      textAccent: "#a78bfa",
+      btnBg: "#a855f7", btnHex: "purple-500",
+      labelColor: "rgba(167,139,250,0.7)",
+    },
+  ];
+
+  return (
+    <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#050507", minHeight: "100vh", padding: "40px 24px" }}>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, letterSpacing: 5, textTransform: "uppercase", marginBottom: 8 }}>Cheat Sheet</p>
+        <h1 style={{ color: "#fff", fontSize: 32, fontWeight: 700, marginBottom: 8 }}>Les 3 Accents en action</h1>
+        <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, marginBottom: 48, lineHeight: 1.6 }}>
+          Chaque card montre : Accent 1 → titre & bordure · Accent 2 → bouton · Accent 3 → blob de fond
+        </p>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+          {palettes.map((p) => (
+            <div key={p.name}>
+              {/* Nom palette */}
+              <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 11, letterSpacing: 4, textTransform: "uppercase", marginBottom: 16 }}>
+                Palette — {p.name}
+              </p>
+
+              {/* Swatches */}
+              <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
+                {[
+                  { role: "Accent 1 → titre, bordure", ...p.a1, ring: true },
+                  { role: "Accent 2 → bouton, label", ...p.a2, ring: false },
+                  { role: "Accent 3 → blob, gradient", ...p.a3, ring: false },
+                ].map((swatch) => (
+                  <div key={swatch.role} style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, padding: "8px 14px" }}>
+                    <div style={{ width: 28, height: 28, borderRadius: 8, background: swatch.hex, boxShadow: swatch.ring ? `0 0 14px ${swatch.hex}60` : "none", flexShrink: 0 }} />
+                    <div>
+                      <p style={{ color: "#fff", fontSize: 12, fontWeight: 600, margin: 0 }}>{swatch.label}</p>
+                      <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 10, margin: "2px 0 0" }}>{swatch.hex}</p>
+                      <p style={{ color: swatch.hex, fontSize: 10, margin: "1px 0 0", opacity: 0.8 }}>{swatch.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Card démo */}
+              <div style={{ position: "relative", background: p.fondCard, border: `1px solid ${p.borderCard}`, borderRadius: 20, padding: 24, overflow: "hidden", maxWidth: 400 }}>
+
+                {/* Blob Accent 3 — fond, coin haut droite */}
+                <div style={{
+                  position: "absolute", top: -40, right: -40,
+                  width: 160, height: 160, borderRadius: "50%",
+                  background: p.a3.hex, opacity: 0.18,
+                  filter: "blur(50px)", pointerEvents: "none"
+                }} />
+                {/* Blob Accent 1 — fond, coin bas gauche */}
+                <div style={{
+                  position: "absolute", bottom: -30, left: -30,
+                  width: 120, height: 120, borderRadius: "50%",
+                  background: p.a1.hex, opacity: 0.12,
+                  filter: "blur(40px)", pointerEvents: "none"
+                }} />
+
+                {/* Ligne lumineuse haut — Accent 1 */}
+                <div style={{
+                  position: "absolute", top: 0, left: "10%",
+                  width: "80%", height: 1,
+                  background: `linear-gradient(to right, transparent, ${p.a1.hex}50, transparent)`
+                }} />
+
+                <div style={{ position: "relative", zIndex: 10 }}>
+                  {/* Label — Accent 2 (atténué) */}
+                  <p style={{ color: p.labelColor, fontSize: 10, letterSpacing: 4, textTransform: "uppercase", fontWeight: 500, marginBottom: 10 }}>
+                    ✦ Accent 2 comme label
+                  </p>
+
+                  {/* Titre — Accent 1 */}
+                  <h2 style={{ color: p.a1.hex, fontSize: 22, fontWeight: 700, marginBottom: 6 }}>
+                    Accent 1 → Titre
+                  </h2>
+
+                  {/* Corps — blanc/60 */}
+                  <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, lineHeight: 1.6, marginBottom: 6 }}>
+                    Texte courant → <code style={{ color: "rgba(255,255,255,0.35)", fontSize: 11 }}>text-white/60</code>
+                  </p>
+                  <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, marginBottom: 20 }}>
+                    Texte secondaire → <code style={{ fontSize: 11 }}>text-white/40</code>
+                  </p>
+
+                  {/* Bouton — Accent 2 */}
+                  <button style={{
+                    width: "100%", padding: "10px 0",
+                    borderRadius: 12, border: "none",
+                    background: p.btnBg,
+                    color: "#fff", fontSize: 13, fontWeight: 600,
+                    cursor: "pointer",
+                    boxShadow: `0 4px 20px ${p.btnBg}40`,
+                    marginBottom: 10
+                  }}>
+                    Accent 2 → Bouton principal
+                  </button>
+
+                  {/* Bouton ghost — Accent 1 */}
+                  <button style={{
+                    width: "100%", padding: "9px 0",
+                    borderRadius: 12,
+                    border: `1px solid ${p.a1.hex}30`,
+                    background: `${p.a1.hex}08`,
+                    color: p.a1.hex, fontSize: 13, fontWeight: 500,
+                    cursor: "pointer",
+                  }}>
+                    Accent 1 → Bouton ghost
+                  </button>
+
+                  {/* Légende blobs */}
+                  <p style={{ color: "rgba(255,255,255,0.2)", fontSize: 10, marginTop: 16, textAlign: "center" }}>
+                    ↑ Accent 3 ({p.a3.hex}) dans les blobs de fond
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Règles résumées */}
+        <div style={{ marginTop: 64, padding: 28, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 20 }}>
+          <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 10, letterSpacing: 4, textTransform: "uppercase", marginBottom: 20 }}>Règles mémorisables</p>
+          {[
+            ["Accent 1", "Titre principal · Bordure de card · Bouton ghost · Ligne lumineuse haut"],
+            ["Accent 2", "Bouton principal (plein) · Label de section · Badge"],
+            ["Accent 3", "Blobs de fond · Gradient de fond · Hover state"],
+            ["text-white", "Titre H1/H2 uniquement"],
+            ["text-white/60", "Corps de texte normal"],
+            ["text-white/40", "Texte secondaire, dates, métadonnées"],
+            ["text-white/30", "Label de section (uppercase + tracking-widest)"],
+            ["border-white/10", "Bordure standard au repos"],
+            ["border-white/20", "Bordure au hover"],
+            ["opacity-15 à 20", "Valeur max pour les blobs (jamais plus)"],
+          ].map(([key, val]) => (
+            <div key={key} style={{ display: "flex", gap: 16, padding: "10px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+              <code style={{ color: "#a78bfa", fontSize: 12, minWidth: 140, flexShrink: 0 }}>{key}</code>
+              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 12, margin: 0 }}>{val}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
